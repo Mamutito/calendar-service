@@ -16,7 +16,7 @@ const newUser = async (req, res = response) => {
     const salt = bcrypt.genSaltSync();
     req.body.password = bcrypt.hashSync(password, salt);
     const newUser = await new User(req.body).save();
-    const token = await generateToken(user.id, user.name);
+    const token = await generateToken(newUser.id, newUser.name);
     res.status(201).json({
       ok: true,
       uid: newUser.id,
