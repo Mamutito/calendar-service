@@ -67,9 +67,10 @@ const loginUser = async (req, res = response) => {
 const revalidateToken = async (req, res = response) => {
   const { uid, name } = req;
   const token = await generateToken(uid, name);
-  console.log(token);
   res.json({
     ok: true,
+    uid,
+    name,
     token,
   });
 };
